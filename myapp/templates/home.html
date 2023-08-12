@@ -19,34 +19,38 @@
     <link rel="stylesheet" href="" />
   </head>
   <body>
-   
-{% if studentData %}
-    
-    <table class="table">
+
+    {% if studentData %}
+    <div class="container pt-5">
+        <table class="table">
         <thead>
-          <tr>
+            <tr>
             <th scope="col">Roll</th>
             <th scope="col">Name</th>
             <th scope="col">Address</th>
             <th scope="col">Fathers Name</th>
-          </tr>
+            <th scope="col">Action</th>
+            </tr>
         </thead>
         <tbody>
+
             {% for std in studentData%}
-          <tr>
-            
+            <tr>
             <td>{{std.roll}}</td>
             <td>{{std.name}}</td>
             <td>{{std.address}}</td>
             <td>{{std.father_name}}</td>
+            <td><a class="btn btn-danger" href="{% url 'delete_student' std.roll %}">Delete</a></td>
+            </tr>
+            {%endfor%}
 
-          </tr>
-          {%endfor%}
         </tbody>
-      </table>
-      {%else%}
-      <h1>Not data found!</h1>
-      {%endif%}
+        </table>
+    </div>
+    {%else%}
+    <h1>Not data found!</h1>
+    {%endif%}
+
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
       integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
