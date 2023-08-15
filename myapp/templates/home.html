@@ -19,7 +19,14 @@
     <link rel="stylesheet" href="" />
   </head>
   <body>
-
+    {% load crispy_forms_tags %}
+    <div class="container">
+      <form mathod="POST" action="">
+        {% csrf_token %}
+      {{form|crispy}}
+      <button class="btn btn-primary" type="submit">Submit</button>
+      </form>
+    </div>
     {% if studentData %}
     <div class="container pt-5">
         <table class="table">
